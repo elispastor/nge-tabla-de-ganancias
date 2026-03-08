@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NGE · Tabla de la Abundancia</title>
+  <title>NGE · La Fuerza de los Niveles</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
     
@@ -25,7 +25,7 @@
       margin: 0 auto;
     }
 
-    /* LOGO NGE (versión mejorada) */
+    /* LOGO NGE (desde el repo) */
     .logo-nge {
       display: flex;
       align-items: center;
@@ -39,18 +39,11 @@
       max-width: fit-content;
     }
 
-    .logo-icon {
-      width: 80px;
+    .logo-nge img {
       height: 80px;
-      background: #FDBB30;
-      border-radius: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #003A6B;
-      font-weight: 900;
-      font-size: 2.8rem;
-      box-shadow: 0 10px 20px rgba(253,187,48,0.4);
+      width: auto;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
       border: 3px solid white;
     }
 
@@ -91,7 +84,7 @@
       font-size: 3rem;
       font-weight: 800;
       color: #003A6B;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
       text-transform: uppercase;
       letter-spacing: 2px;
     }
@@ -100,13 +93,12 @@
       font-size: 1.3rem;
       color: #FDBB30;
       font-weight: 600;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto;
       line-height: 1.6;
     }
 
-    .title-sub span {
+    .highlight {
       background: rgba(253,187,48,0.2);
       padding: 5px 15px;
       border-radius: 50px;
@@ -114,85 +106,115 @@
       font-weight: 700;
     }
 
-    /* Tabla espectacular */
+    /* Cards de recuperación */
+    .recovery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin: 50px 0;
+    }
+
+    .recovery-card {
+      background: white;
+      border-radius: 30px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,58,107,0.1);
+      border: 2px solid #FDBB30;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .recovery-card::before {
+      content: "🔥";
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      font-size: 5rem;
+      opacity: 0.1;
+      transform: rotate(15deg);
+    }
+
+    .recovery-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #003A6B;
+      margin-bottom: 15px;
+    }
+
+    .recovery-price {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #FDBB30;
+      margin-bottom: 20px;
+    }
+
+    .recovery-desc {
+      font-size: 1.1rem;
+      color: #7a5b4b;
+      margin-bottom: 25px;
+    }
+
+    .recovery-math {
+      background: rgba(0,58,107,0.05);
+      padding: 15px;
+      border-radius: 20px;
+      font-size: 1.2rem;
+    }
+
+    .recovery-math span {
+      font-weight: 800;
+      color: #003A6B;
+    }
+
+    /* Tabla de niveles */
     .table-container {
       background: white;
       border-radius: 50px;
       padding: 30px;
       box-shadow: 0 40px 80px rgba(0,58,107,0.15);
       border: 3px solid #FDBB30;
-      margin-bottom: 50px;
+      margin: 50px 0;
       overflow-x: auto;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 1rem;
     }
 
     th {
       background: linear-gradient(135deg, #003A6B 0%, #1A5F8A 100%);
       color: white;
-      padding: 20px 15px;
+      padding: 20px;
       font-weight: 700;
-      font-size: 1.1rem;
-      text-align: center;
+      font-size: 1rem;
       border: 2px solid #FDBB30;
     }
 
-    th:first-child {
-      border-top-left-radius: 20px;
-    }
-
-    th:last-child {
-      border-top-right-radius: 20px;
-    }
-
     td {
-      padding: 18px 15px;
+      padding: 15px;
       text-align: center;
       border: 1px solid rgba(253,187,48,0.3);
-      font-weight: 500;
     }
 
     tr:nth-child(even) {
       background: rgba(0,58,107,0.02);
     }
 
-    tr:hover {
-      background: rgba(253,187,48,0.05);
-      transform: scale(1.01);
-      transition: all 0.2s;
-    }
-
     .nivel-nge {
       font-weight: 800;
       color: #003A6B;
-      font-size: 1.2rem;
-    }
-
-    .costo-nge {
-      font-weight: 700;
-      color: #2c1810;
     }
 
     .comision-nge {
       font-weight: 700;
       color: #FDBB30;
-      font-size: 1.1rem;
-    }
-
-    .personas-nge {
-      font-weight: 700;
-      color: #003A6B;
     }
 
     .potencial-nge {
       font-weight: 800;
       color: #003A6B;
-      font-size: 1.2rem;
-      background: rgba(253,187,48,0.1);
     }
 
     .total-row {
@@ -202,99 +224,49 @@
     .total-row td {
       color: white;
       font-weight: 800;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       border: 2px solid #FDBB30;
     }
 
     .total-destacado {
       font-size: 1.8rem;
       color: #FDBB30 !important;
-      font-weight: 900;
     }
 
-    /* Cards de beneficios */
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 25px;
-      margin: 60px 0 40px;
-    }
-
-    .benefit-card {
+    /* Explicación de niveles */
+    .levels-explanation {
       background: white;
-      border-radius: 30px;
-      padding: 30px 20px;
-      text-align: center;
-      box-shadow: 0 20px 40px rgba(0,58,107,0.1);
-      border: 2px solid rgba(253,187,48,0.3);
-      transition: all 0.3s;
-    }
-
-    .benefit-card:hover {
-      transform: translateY(-10px);
-      border-color: #FDBB30;
-      box-shadow: 0 30px 60px rgba(0,58,107,0.15);
-    }
-
-    .benefit-icon {
-      font-size: 3rem;
-      margin-bottom: 15px;
-    }
-
-    .benefit-title {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #003A6B;
-      margin-bottom: 10px;
-    }
-
-    .benefit-text {
-      font-size: 0.9rem;
-      color: #7a5b4b;
-      line-height: 1.5;
-    }
-
-    /* Banco NGE */
-    .banco-section {
-      background: linear-gradient(135deg, #003A6B 0%, #1A5F8A 100%);
-      border-radius: 50px;
+      border-radius: 40px;
       padding: 40px;
-      border: 3px solid #FDBB30;
-      color: white;
-      margin-top: 50px;
+      border: 2px solid #FDBB30;
+      margin: 40px 0;
     }
 
-    .banco-title {
+    .levels-title {
       font-size: 2rem;
       font-weight: 800;
-      color: #FDBB30;
-      margin-bottom: 20px;
+      color: #003A6B;
+      margin-bottom: 30px;
       display: flex;
       align-items: center;
       gap: 15px;
     }
 
-    .banco-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
+    .level-item {
+      margin-bottom: 25px;
+      padding-left: 20px;
+      border-left: 5px solid #FDBB30;
     }
 
-    .banco-item {
-      background: rgba(255,255,255,0.1);
-      padding: 25px;
-      border-radius: 30px;
-      border: 1px solid rgba(253,187,48,0.3);
-    }
-
-    .banco-item h3 {
-      color: #FDBB30;
+    .level-name {
       font-size: 1.3rem;
-      margin-bottom: 15px;
+      font-weight: 700;
+      color: #003A6B;
+      margin-bottom: 8px;
     }
 
-    .banco-item p {
-      color: rgba(255,255,255,0.9);
+    .level-desc {
+      color: #7a5b4b;
       line-height: 1.6;
     }
 
@@ -309,155 +281,184 @@
 <body>
   <div class="container">
     
-    <!-- LOGO NGE (MEJORADO) -->
+    <!-- LOGO NGE (desde el repo) -->
     <div class="logo-nge">
-      <div class="logo-icon">NGE</div>
+      <img src="LOGO.jpg" alt="NUEVA GENERACIÓN EMPRENDEDORA">
       <div class="logo-text">
         <div class="logo-text-top">NUEVA GENERACIÓN</div>
         <div class="logo-text-bottom">EMPRENDEDORA</div>
-        <div class="logo-slogan">⚡ El poder de la comunidad unida ⚡</div>
+        <div class="logo-slogan">⚡ Recuperas tu inversión con solo 2 personas ⚡</div>
       </div>
     </div>
 
-    <!-- TÍTULO ÉPICO -->
+    <!-- TÍTULO -->
     <div class="title-section">
-      <h1 class="title-main">LA TABLA DE LA ABUNDANCIA</h1>
+      <h1 class="title-main">LA FUERZA DE LOS NIVELES</h1>
       <p class="title-sub">
-        <span>Construye tu imperio</span> · Ganancias reales · Comunidad solidaria · Banco interno NGE
+        <span class="highlight">Con 2 personas recuperas tu inversión</span> · Cada nivel es un plan de crecimiento · Todos ganan
       </p>
     </div>
 
-    <!-- TABLA PODEROSA -->
+    <!-- CARDS DE RECUPERACIÓN -->
+    <div class="recovery-grid">
+      <div class="recovery-card">
+        <div class="recovery-title">PLAN BÁSICO</div>
+        <div class="recovery-price">$25.000</div>
+        <div class="recovery-desc">Inversión inicial accesible para todos</div>
+        <div class="recovery-math">
+          <span>2 referidos = $20.000</span><br>
+          🔥 ¡Recuperas el 80%!
+        </div>
+      </div>
+      <div class="recovery-card">
+        <div class="recovery-title">PLAN ÉLITE</div>
+        <div class="recovery-price">$100.000</div>
+        <div class="recovery-desc">El plan que construye imperios</div>
+        <div class="recovery-math">
+          <span>2 referidos = $80.000</span><br>
+          🔥 ¡Recuperas el 80%!
+        </div>
+      </div>
+      <div class="recovery-card">
+        <div class="recovery-title">PLAN EMPRESARIAL</div>
+        <div class="recovery-price">$200.000</div>
+        <div class="recovery-desc">Para quienes quieren escalar YA</div>
+        <div class="recovery-math">
+          <span>2 referidos = $160.000</span><br>
+          🔥 ¡Recuperas el 80%!
+        </div>
+      </div>
+    </div>
+
+    <!-- TABLA DE NIVELES -->
     <div class="table-container">
       <table>
         <thead>
           <tr>
-            <th>PLAN / NIVEL</th>
-            <th>COSTO DEL PLAN</th>
-            <th>💰 COMISIÓN<br><small>(40% para ti)</small></th>
-            <th>👥 PERSONAS EN TU RED</th>
-            <th>🔥 POTENCIAL TOTAL</th>
+            <th>NIVEL</th>
+            <th>INVERSIÓN</th>
+            <th>COMISIÓN 40%</th>
+            <th>PERSONAS EN TU RED</th>
+            <th>GANANCIA POR NIVEL</th>
+            <th>ACUMULADO</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="nivel-nge">PLAN BÁSICO</td>
-            <td class="costo-nge">$25.000 COP</td>
+            <td class="nivel-nge">Nivel 1</td>
+            <td>$25.000</td>
             <td class="comision-nge">$10.000</td>
-            <td class="personas-nge">2</td>
+            <td>2</td>
+            <td>$20.000</td>
             <td class="potencial-nge">$20.000</td>
           </tr>
           <tr>
-            <td class="nivel-nge">NIVEL 2</td>
-            <td class="costo-nge">$50.000 COP</td>
+            <td class="nivel-nge">Nivel 2</td>
+            <td>$50.000</td>
             <td class="comision-nge">$20.000</td>
-            <td class="personas-nge">4</td>
-            <td class="potencial-nge">$80.000</td>
+            <td>4</td>
+            <td>$80.000</td>
+            <td class="potencial-nge">$100.000</td>
           </tr>
           <tr>
-            <td class="nivel-nge">NIVEL 3</td>
-            <td class="costo-nge">$100.000 COP</td>
+            <td class="nivel-nge">Nivel 3</td>
+            <td>$100.000</td>
             <td class="comision-nge">$40.000</td>
-            <td class="personas-nge">8</td>
-            <td class="potencial-nge">$320.000</td>
+            <td>8</td>
+            <td>$320.000</td>
+            <td class="potencial-nge">$420.000</td>
           </tr>
           <tr>
-            <td class="nivel-nge">NIVEL 4</td>
-            <td class="costo-nge">$200.000 COP</td>
+            <td class="nivel-nge">Nivel 4</td>
+            <td>$200.000</td>
             <td class="comision-nge">$80.000</td>
-            <td class="personas-nge">16</td>
-            <td class="potencial-nge">$1.280.000</td>
+            <td>16</td>
+            <td>$1.280.000</td>
+            <td class="potencial-nge">$1.700.000</td>
           </tr>
           <tr>
-            <td class="nivel-nge">NIVEL 5</td>
-            <td class="costo-nge">$400.000 COP</td>
+            <td class="nivel-nge">Nivel 5</td>
+            <td>$400.000</td>
             <td class="comision-nge">$160.000</td>
-            <td class="personas-nge">32</td>
-            <td class="potencial-nge">$5.120.000</td>
+            <td>32</td>
+            <td>$5.120.000</td>
+            <td class="potencial-nge">$6.820.000</td>
           </tr>
           <tr>
-            <td class="nivel-nge">NIVEL 6</td>
-            <td class="costo-nge">$800.000 COP</td>
+            <td class="nivel-nge">Nivel 6</td>
+            <td>$800.000</td>
             <td class="comision-nge">$320.000</td>
-            <td class="personas-nge">64</td>
-            <td class="potencial-nge">$20.480.000</td>
+            <td>64</td>
+            <td>$20.480.000</td>
+            <td class="potencial-nge">$27.300.000</td>
           </tr>
           <tr>
-            <td class="nivel-nge">NIVEL 7</td>
-            <td class="costo-nge">$1.600.000 COP</td>
+            <td class="nivel-nge">Nivel 7</td>
+            <td>$1.600.000</td>
             <td class="comision-nge">$640.000</td>
-            <td class="personas-nge">128</td>
-            <td class="potencial-nge">$81.920.000</td>
+            <td>128</td>
+            <td>$81.920.000</td>
+            <td class="potencial-nge">$109.220.000</td>
           </tr>
           <tr class="total-row">
-            <td colspan="4" style="text-align: right; font-size: 1.5rem;">🔥 TOTAL ACUMULADO 🔥</td>
-            <td class="total-destacado">$109.220.000 COP</td>
+            <td colspan="5" style="text-align: right; font-size: 1.3rem;">🔥 INVERSIÓN TOTAL 🔥</td>
+            <td class="total-destacado">$3.175.000</td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <!-- BENEFICIOS DE LA COMUNIDAD -->
-    <div class="benefits-grid">
-      <div class="benefit-card">
-        <div class="benefit-icon">💰</div>
-        <div class="benefit-title">Ganancias para todos</div>
-        <div class="benefit-text">Cada persona que entra genera comisiones para ti y para su red. Todos ganan, todos crecen.</div>
+    <!-- EXPLICACIÓN DE NIVELES -->
+    <div class="levels-explanation">
+      <div class="levels-title">
+        <span>📈</span> ¿CÓMO FUNCIONAN LOS NIVELES?
       </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">🤝</div>
-        <div class="benefit-title">Comunidad solidaria</div>
-        <div class="benefit-text">Compras y vendes entre miembros. El dinero se queda en nuestra economía interna.</div>
+      
+      <div class="level-item">
+        <div class="level-name">🎯 NIVEL 1 · Tus primeros 2</div>
+        <div class="level-desc">Inviertes $25.000. Consigues 2 personas que también invierten. Ganas $20.000. ¡Ya casi recuperaste todo! La tercera persona es ganancia neta.</div>
       </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">🏦</div>
-        <div class="benefit-title">Banco NGE</div>
-        <div class="benefit-text">Transferencias internas, pagos entre afiliados, saldo disponible en tu backoffice.</div>
+
+      <div class="level-item">
+        <div class="level-name">⚡ NIVEL 2 · El despegue</div>
+        <div class="level-desc">Tus 2 referidos consiguen cada uno sus 2. Ahora tienes 4 personas en tu nivel 2. Ganas $80.000 más. Acumulado: $100.000. ¡Ya recuperaste tu inversión inicial y te sobra!</div>
       </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">🚚</div>
-        <div class="benefit-title">Todo en comunidad</div>
-        <div class="benefit-text">¿Necesitas un camión? ¿un técnico? Lo encuentras aquí, y pagas con tu saldo NGE.</div>
+
+      <div class="level-item">
+        <div class="level-name">🔥 NIVEL 3 · La aceleración</div>
+        <div class="level-desc">Esas 4 personas consiguen sus 2. Nivel 3: 8 personas. Ganas $320.000. Acumulado: $420.000. ¡Ya multiplicaste por 4 tu inversión!</div>
+      </div>
+
+      <div class="level-item">
+        <div class="level-name">💎 NIVEL 4 · La riqueza</div>
+        <div class="level-desc">16 personas en tu red. Ganas $1.280.000. Acumulado: $1.700.000. ¡Esto ya es un sueldo anual para muchos!</div>
+      </div>
+
+      <div class="level-item">
+        <div class="level-name">🚀 NIVEL 5 · Libertad financiera</div>
+        <div class="level-desc">32 personas. Ganas $5.120.000. Acumulado: $6.820.000. ¡Puedes vivir de esto!</div>
+      </div>
+
+      <div class="level-item">
+        <div class="level-name">🏦 NIVEL 6 · Imperio</div>
+        <div class="level-desc">64 personas. Ganas $20.480.000. Acumulado: $27.300.000. ¡Estás en el top 1%!</div>
+      </div>
+
+      <div class="level-item">
+        <div class="level-name">👑 NIVEL 7 · Leyenda</div>
+        <div class="level-desc">128 personas. Ganas $81.920.000. Acumulado: $109.220.000. ¡Eres dueño de tu tiempo y tu vida!</div>
       </div>
     </div>
 
-    <!-- BANCO NGE (EL SUBSISTEMA FINANCIERO) -->
-    <div class="banco-section">
-      <div class="banco-title">
-        <span>🏦</span> BANCO NGE · El corazón financiero de la comunidad
-      </div>
-      <div class="banco-grid">
-        <div class="banco-item">
-          <h3>💰 Transferencias P2P</h3>
-          <p>Envía y recibe saldo entre miembros al instante. Sin comisiones bancarias, sin demoras.</p>
-        </div>
-        <div class="banco-item">
-          <h3>🔄 Economía circular</h3>
-          <p>Lo que ganas lo puedes usar para pagar servicios dentro de la comunidad. El dinero no se fuga.</p>
-        </div>
-        <div class="banco-item">
-          <h3>📈 Respaldo real</h3>
-          <p>Cada peso en tu cuenta está respaldado por el fondo común de NGE. Puedes retirar cuando quieras.</p>
-        </div>
-        <div class="banco-item">
-          <h3>🤲 Solidaridad</h3>
-          <p>Apoyamos a los miembros con microcréditos y fondos de emergencia entre todos.</p>
-        </div>
-        <div class="banco-item">
-          <h3>🎯 Metas colectivas</h3>
-          <p>Cuando la comunidad crece, todos recibimos bonos extras por logros compartidos.</p>
-        </div>
-        <div class="banco-item">
-          <h3>🔐 Transparencia</h3>
-          <p>Todas las transacciones son visibles en tu backoffice. Sabes cuánto tienes y a dónde va.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- PIE CON VISIÓN -->
+    <!-- MENSAJE FINAL -->
     <div class="footer">
-      <p>⚡ NUEVA GENERACIÓN EMPRENDEDORA · Construyendo un mundo donde todos ganan ⚡</p>
-      <p style="margin-top: 10px;">Con $25.000 puedes comenzar · Con $100.000 puedes construir un imperio · Con comunidad puedes lograrlo todo</p>
+      <p>⚡ NUEVA GENERACIÓN EMPRENDEDORA · El poder de crecer juntos ⚡</p>
+      <p style="margin-top: 15px; font-size: 1.2rem; color: #003A6B; font-weight: 700;">
+        Con solo 2 personas recuperas tu inversión · Con 4 ya estás ganando · Con 8 cambias tu vida
+      </p>
+      <p style="margin-top: 20px; font-size: 0.9rem;">
+        Inversión total para alcanzar el nivel 7: $3.175.000 · Ganancias potenciales: ¡MÁS DE 100 MILLONES!
+      </p>
     </div>
   </div>
 </body>
