@@ -5,7 +5,513 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NGE · La Fuerza de los Niveles</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+    @import <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>NGE · La Fuerza de los Niveles</title>
+  <style>
+    /* RESET Y VARIABLES */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --azul-nge: #003A6B;
+      --amarillo-nge: #FDBB30;
+      --fondo: #faf7f2;
+      --texto: #2c1810;
+    }
+
+    body {
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--fondo);
+      color: var(--texto);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      padding: 16px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* LOGO LIMPIO (SIN MARCO) */
+    .logo-nge {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 30px;
+      background: transparent;
+      padding: 0;
+      border: none;
+      box-shadow: none;
+    }
+
+    .logo-nge img {
+      height: 60px;
+      width: auto;
+      border-radius: 12px;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-text-top {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--azul-nge);
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-text-bottom {
+      font-size: 0.9rem;
+      color: var(--amarillo-nge);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* TÍTULOS */
+    .title-section {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .title-main {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--azul-nge);
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .title-sub {
+      font-size: 1rem;
+      color: var(--texto);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .highlight {
+      background: rgba(253,187,48,0.15);
+      padding: 4px 12px;
+      border-radius: 30px;
+      color: var(--azul-nge);
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    /* CARDS DE RECUPERACIÓN (MEJORADAS PARA MÓVIL) */
+    .recovery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin: 30px 0;
+    }
+
+    .recovery-card {
+      background: white;
+      border-radius: 24px;
+      padding: 24px 20px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,58,107,0.08);
+      border: 1px solid rgba(253,187,48,0.2);
+    }
+
+    .recovery-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--azul-nge);
+      margin-bottom: 8px;
+    }
+
+    .recovery-price {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--amarillo-nge);
+      margin-bottom: 12px;
+    }
+
+    .recovery-desc {
+      font-size: 0.9rem;
+      color: #7a5b4b;
+      margin-bottom: 20px;
+    }
+
+    .recovery-math {
+      background: rgba(0,58,107,0.03);
+      padding: 15px;
+      border-radius: 16px;
+      font-size: 1rem;
+    }
+
+    .recovery-math span {
+      font-weight: 700;
+      color: var(--azul-nge);
+    }
+
+    /* TABLA (AHORA RESPONSIVE) */
+    .table-container {
+      background: white;
+      border-radius: 24px;
+      padding: 16px;
+      box-shadow: 0 15px 30px rgba(0,58,107,0.1);
+      border: 1px solid rgba(253,187,48,0.3);
+      margin: 40px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px; /* Permite scroll horizontal si es necesario */
+      font-size: 0.9rem;
+    }
+
+    th {
+      background: var(--azul-nge);
+      color: white;
+      padding: 14px 10px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 12px 8px;
+      text-align: center;
+      border-bottom: 1px solid rgba(253,187,48,0.2);
+    }
+
+    .nivel-nge {
+      font-weight: 700;
+      color: var(--azul-nge);
+    }
+
+    .comision-nge {
+      font-weight: 600;
+      color: var(--amarillo-nge);
+    }
+
+    .total-row {
+      background: var(--azul-nge);
+      color: white;
+      font-weight: 700;
+    }
+
+    .total-destacado {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--amarillo-nge) !important;
+    }
+
+    /* EXPLICACIÓN DE NIVELES */
+    .levels-explanation {
+      background: white;
+      border-radius: 24px;
+      padding: 24px;
+      border: 1px solid rgba(253,187,48,0.3);
+      margin: 30px 0;
+    }
+
+    .levels-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--azul-nge);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .level-item {
+      margin-bottom: 20px;
+      padding-left: 16px;
+      border-left: 4px solid var(--amarillo-nge);
+    }
+
+    .level-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--azul-nge);
+      margin-bottom: 6px;
+    }
+
+    .level-desc {
+      font-size: 0.9rem;
+      color: #7a5b4b;
+      line-height: 1.5;
+    }
+
+    /* MENSAJE HISTÓRICO */
+    .manifesto {
+      background: linear-gradient(135deg, var(--azul-nge), #1a4f7a);
+      border-radius: 24px;
+      padding: 30px 24px;
+      color: white;
+      margin: 40px 0;
+      border: 2px solid var(--amarillo-nge);
+    }
+
+    .manifesto h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--amarillo-nge);
+    }
+
+    .manifesto p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      opacity: 0.95;
+    }
+
+    .manifesto strong {
+      color: var(--amarillo-nge);
+      font-weight: 700;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 2px solid rgba(253,187,48,0.3);
+      font-size: 0.9rem;
+      color: #7a5b4b;
+    }
+
+    /* AJUSTES MÓVIL */
+    @media (max-width: 480px) {
+      .logo-text-top {
+        font-size: 1.3rem;
+      }
+      
+      .logo-text-bottom {
+        font-size: 0.7rem;
+      }
+      
+      .title-main {
+        font-size: 1.6rem;
+      }
+      
+      .recovery-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .manifesto h2 {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- LOGO LIMPIO (SIN MARCO) -->
+    <div class="logo-nge">
+      <img src="LOGO.jpg" alt="NGE">
+      <div class="logo-text">
+        <div class="logo-text-top">NUEVA GENERACIÓN</div>
+        <div class="logo-text-bottom">EMPRENDEDORA</div>
+      </div>
+    </div>
+
+    <!-- TÍTULO -->
+    <div class="title-section">
+      <span class="highlight">⚡ Con 2 personas recuperas tu inversión ⚡</span>
+      <h1 class="title-main">LA FUERZA DE LOS NIVELES</h1>
+      <p class="title-sub">Cada nivel es un plan de crecimiento · Todos ganan en comunidad</p>
+    </div>
+
+    <!-- CARDS DE RECUPERACIÓN -->
+    <div class="recovery-grid">
+      <div class="recovery-card">
+        <div class="recovery-title">PLAN BÁSICO</div>
+        <div class="recovery-price">$25.000</div>
+        <div class="recovery-desc">Inversión inicial accesible</div>
+        <div class="recovery-math">
+          <span>2 referidos = $20.000</span><br>
+          🔥 Recuperas el 80%
+        </div>
+      </div>
+      <div class="recovery-card">
+        <div class="recovery-title">PLAN ÉLITE</div>
+        <div class="recovery-price">$100.000</div>
+        <div class="recovery-desc">El plan que construye imperios</div>
+        <div class="recovery-math">
+          <span>2 referidos = $80.000</span><br>
+          🔥 Recuperas el 80%
+        </div>
+      </div>
+      <div class="recovery-card">
+        <div class="recovery-title">PLAN EMPRESARIAL</div>
+        <div class="recovery-price">$200.000</div>
+        <div class="recovery-desc">Para escalar YA</div>
+        <div class="recovery-math">
+          <span>2 referidos = $160.000</span><br>
+          🔥 Recuperas el 80%
+        </div>
+      </div>
+    </div>
+
+    <!-- TABLA DE NIVELES (RESPONSIVE) -->
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>NIVEL</th>
+            <th>INVERSIÓN</th>
+            <th>COMISIÓN 40%</th>
+            <th>PERSONAS</th>
+            <th>GANANCIA</th>
+            <th>ACUMULADO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="nivel-nge">1</td>
+            <td>$25k</td>
+            <td class="comision-nge">$10k</td>
+            <td>2</td>
+            <td>$20k</td>
+            <td>$20k</td>
+          </tr>
+          <tr>
+            <td class="nivel-nge">2</td>
+            <td>$50k</td>
+            <td class="comision-nge">$20k</td>
+            <td>4</td>
+            <td>$80k</td>
+            <td>$100k</td>
+          </tr>
+          <tr>
+            <td class="nivel-nge">3</td>
+            <td>$100k</td>
+            <td class="comision-nge">$40k</td>
+            <td>8</td>
+            <td>$320k</td>
+            <td>$420k</td>
+          </tr>
+          <tr>
+            <td class="nivel-nge">4</td>
+            <td>$200k</td>
+            <td class="comision-nge">$80k</td>
+            <td>16</td>
+            <td>$1.280k</td>
+            <td>$1.700k</td>
+          </tr>
+          <tr>
+            <td class="nivel-nge">5</td>
+            <td>$400k</td>
+            <td class="comision-nge">$160k</td>
+            <td>32</td>
+            <td>$5.120k</td>
+            <td>$6.820k</td>
+          </tr>
+          <tr>
+            <td class="nivel-nge">6</td>
+            <td>$800k</td>
+            <td class="comision-nge">$320k</td>
+            <td>64</td>
+            <td>$20.480k</td>
+            <td>$27.300k</td>
+          </tr>
+          <tr>
+            <td class="nivel-nge">7</td>
+            <td>$1.600k</td>
+            <td class="comision-nge">$640k</td>
+            <td>128</td>
+            <td>$81.920k</td>
+            <td>$109.220k</td>
+          </tr>
+          <tr class="total-row">
+            <td colspan="5" style="text-align: right">INVERSIÓN TOTAL</td>
+            <td class="total-destacado">$3.175k</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- EXPLICACIÓN DE NIVELES -->
+    <div class="levels-explanation">
+      <div class="levels-title">📈 ¿CÓMO FUNCIONAN LOS NIVELES?</div>
+      
+      <div class="level-item">
+        <div class="level-name">🎯 NIVEL 1 · Tus primeros 2</div>
+        <div class="level-desc">Inviertes $25.000. Consigues 2 personas que también invierten. Ganas $20.000. ¡Ya casi recuperaste!</div>
+      </div>
+
+      <div class="level-item">
+        <div class="level-name">⚡ NIVEL 2 · El despegue</div>
+        <div class="level-desc">Tus 2 referidos consiguen sus 2. Nivel 2: 4 personas. Ganas $80.000. Acumulado: $100.000. ¡Ya recuperaste!</div>
+      </div>
+
+      <div class="level-item">
+        <div class="level-name">🔥 NIVEL 3 · La aceleración</div>
+        <div class="level-desc">8 personas. Ganas $320.000. Acumulado: $420.000. ¡Multiplicaste por 4!</div>
+      </div>
+
+      <div class="level-item">
+        <div class="level-name">💎 NIVEL 4 · La riqueza</div>
+        <div class="level-desc">16 personas. Ganas $1.280.000. Acumulado: $1.700.000. ¡Esto es un sueldo anual!</div>
+      </div>
+
+      <div class="level-item">
+        <div class="level-name">🚀 NIVEL 5 · Libertad financiera</div>
+        <div class="level-desc">32 personas. Ganas $5.120.000. Acumulado: $6.820.000. ¡Vives de esto!</div>
+      </div>
+
+      <div class="level-item">
+        <div class="level-name">🏦 NIVEL 6 · Imperio</div>
+        <div class="level-desc">64 personas. Ganas $20.480.000. Acumulado: $27.300.000. ¡Top 1%!</div>
+      </div>
+
+      <div class="level-item">
+        <div class="level-name">👑 NIVEL 7 · Leyenda</div>
+        <div class="level-desc">128 personas. Ganas $81.920.000. Acumulado: $109.220.000. ¡Eres libre!</div>
+      </div>
+    </div>
+
+    <!-- MANIFIESTO HISTÓRICO -->
+    <div class="manifesto">
+      <h2>⚡ LA NUEVA GENERACIÓN EMPRENDEDORA</h2>
+      <p>
+        Con este sistema estamos <strong>reivindicando a los emprendedores</strong> en esta segunda etapa de la era digital.
+      </p>
+      <p>
+        En la <strong>primera era digital</strong>, solo unos pocos disfrutaron los ingresos de la publicidad y se convirtieron en multimillonarios, <strong>sin repartir con quienes les ayudaron a construir su riqueza</strong>.
+      </p>
+      <p>
+        Hoy, con la tecnología existente, <strong>los ingresos de la publicidad se reparten entre todos</strong> los miembros de la comunidad. Porque cuando uno crece, crecemos todos.
+      </p>
+      <p style="font-size: 1.2rem; font-weight: 700; margin-top: 25px; color: var(--amarillo-nge);">
+        La riqueza ya no es de unos pocos. Es de la NUEVA GENERACIÓN.
+      </p>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <p>⚡ NUEVA GENERACIÓN EMPRENDEDORA · El poder de crecer juntos ⚡</p>
+      <p style="margin-top: 10px; color: var(--azul-nge); font-weight: 600;">
+        Con 2 personas recuperas tu inversión · Con 4 ya ganas · Con 8 cambias tu vida
+      </p>
+      <p style="margin-top: 15px; font-size: 0.8rem;">
+        Inversión total para nivel 7: $3.175.000 · Ganancias potenciales: MÁS DE 100 MILLONES
+      </p>
+    </div>
+  </div>
+</body>
+</html>url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
     
     * {
       margin: 0;
