@@ -2,348 +2,192 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>NGE · La Fuerza de los Niveles</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>🔨 Taller de Herrería Duarte · Soldaduras especiales</title>
+  
+  <!-- ANTI-CACHÉ (para que siempre se vea la última versión) -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --azul-nge: #003A6B;
-      --amarillo-nge: #FDBB30;
-      --fondo: #faf7f2;
-      --texto: #2c1810;
-    }
-
-    body {
-      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--fondo);
-      color: var(--texto);
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-      padding: 20px;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    /* LOGO PRINCIPAL (ARRIBA, GRANDE, SOLO) */
-    .logo-principal {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .logo-principal img {
-      max-width: 280px;
-      width: 100%;
-      height: auto;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,58,107,0.15);
-    }
-
-    .title-section {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .title-main {
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: var(--azul-nge);
-      margin-bottom: 10px;
-      line-height: 1.2;
-    }
-
-    .highlight {
-      background: rgba(253,187,48,0.15);
-      padding: 6px 16px;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Open Sans', sans-serif; background: #1a1a1a; color: #f0f0f0; }
+    h1, h2, h3 { font-family: 'Montserrat', sans-serif; font-weight: 700; }
+    .btn-wsp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25d366;
+      color: white;
       border-radius: 50px;
-      color: var(--azul-nge);
+      padding: 12px 20px;
       font-weight: 600;
-      display: inline-block;
-      margin-bottom: 15px;
-      font-size: 1.1rem;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
-
-    /* Cards de recuperación */
-    .recovery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-      margin: 30px 0;
-    }
-
-    .recovery-card {
-      background: white;
-      border-radius: 24px;
-      padding: 24px 20px;
-      text-align: center;
-      box-shadow: 0 10px 25px rgba(0,58,107,0.08);
-      border: 1px solid rgba(253,187,48,0.2);
-    }
-
-    .recovery-title {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--azul-nge);
-      margin-bottom: 8px;
-    }
-
-    .recovery-price {
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: var(--amarillo-nge);
-      margin-bottom: 12px;
-    }
-
-    .recovery-math {
-      background: rgba(0,58,107,0.03);
-      padding: 15px;
-      border-radius: 16px;
-      font-size: 1rem;
-    }
-
-    .recovery-math span {
-      font-weight: 700;
-      color: var(--azul-nge);
-    }
-
-    /* Tabla */
-    .table-container {
-      background: white;
-      border-radius: 24px;
-      padding: 16px;
-      box-shadow: 0 15px 30px rgba(0,58,107,0.1);
-      border: 1px solid rgba(253,187,48,0.3);
-      margin: 40px 0;
-      overflow-x: auto;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 600px;
-      font-size: 0.9rem;
-    }
-
-    th {
-      background: var(--azul-nge);
+    .btn-nge {
+      background: #ff6b35;
       color: white;
-      padding: 14px 10px;
-      font-weight: 600;
-    }
-
-    td {
-      padding: 12px 8px;
-      text-align: center;
-      border-bottom: 1px solid rgba(253,187,48,0.2);
-    }
-
-    .comision-nge {
-      font-weight: 600;
-      color: var(--amarillo-nge);
-    }
-
-    .total-row {
-      background: var(--azul-nge);
-      color: white;
+      padding: 12px 24px;
+      border-radius: 40px;
       font-weight: 700;
+      transition: all 0.3s;
+      border: 2px solid #f4a261;
     }
-
-    .total-destacado {
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: var(--amarillo-nge) !important;
+    .btn-nge:hover {
+      background: #f4a261;
+      color: #ff6b35;
+      transform: scale(1.05);
     }
-
-    /* Niveles */
-    .levels-explanation {
-      background: white;
-      border-radius: 24px;
-      padding: 24px;
-      border: 1px solid rgba(253,187,48,0.3);
-      margin: 30px 0;
-    }
-
-    .levels-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--azul-nge);
-      margin-bottom: 20px;
-    }
-
-    .level-item {
-      margin-bottom: 15px;
-      padding-left: 16px;
-      border-left: 4px solid var(--amarillo-nge);
-    }
-
-    .level-name {
-      font-weight: 700;
-      color: var(--azul-nge);
-    }
-
-    /* Manifiesto con logo abajo */
-    .manifesto {
-      background: linear-gradient(135deg, var(--azul-nge), #1a4f7a);
-      border-radius: 24px;
-      padding: 40px 30px;
-      color: white;
-      margin: 40px 0;
-      border: 2px solid var(--amarillo-nge);
-      text-align: center;
-    }
-
-    .manifesto h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-      color: var(--amarillo-nge);
-    }
-
-    .manifesto p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      margin-bottom: 20px;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .manifesto strong {
-      color: var(--amarillo-nge);
-    }
-
-    .logo-abajo {
-      margin-top: 30px;
-    }
-
-    .logo-abajo img {
-      max-width: 180px;
-      width: 100%;
-      height: auto;
-      opacity: 0.9;
-      transition: opacity 0.3s;
-      border-radius: 12px;
-    }
-
-    .logo-abajo img:hover {
-      opacity: 1;
-    }
-
-    .footer {
-      text-align: center;
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 2px solid rgba(253,187,48,0.3);
-      font-size: 0.9rem;
-      color: #7a5b4b;
-    }
-
-    @media (max-width: 480px) {
-      .title-main { font-size: 1.6rem; }
-      .recovery-grid { grid-template-columns: 1fr; }
-      .manifesto h2 { font-size: 1.5rem; }
-      .manifesto p { font-size: 1rem; }
-      .logo-principal img { max-width: 200px; }
-    }
+    #mobile-menu { display: none; }
+    #mobile-menu.mostrar { display: flex; }
+    .menu-hamburguesa { cursor: pointer; }
+    section { scroll-margin-top: 80px; }
   </style>
 </head>
-<body>
-  <div class="container">
-    
-    <!-- LOGO PRINCIPAL (ARRIBA, GRANDE, SOLO) -->
-    <div class="logo-principal">
-      <img src="logo.png" alt="NUEVA GENERACIÓN EMPRENDEDORA">
-    </div>
+<body class="bg-gray-900">
 
-    <div class="title-section">
-      <span class="highlight">⚡ Con 2 personas recuperas tu inversión ⚡</span>
-      <h1 class="title-main">LA FUERZA DE LOS NIVELES</h1>
-    </div>
+<!-- WhatsApp flotante -->
+<a href="https://wa.me/573003254808?text=Hola%20José%20Armando,%20quiero%20cotizar%20un%20trabajo%20de%20herrería" class="btn-wsp" target="_blank">
+  <i class="fab fa-whatsapp"></i> Cotizar por WhatsApp
+</a>
 
-    <!-- Cards -->
-    <div class="recovery-grid">
-      <div class="recovery-card">
-        <div class="recovery-title">PLAN BÁSICO</div>
-        <div class="recovery-price">$25.000</div>
-        <div class="recovery-math"><span>2 ref = $20.000</span> 🔥 80%</div>
-      </div>
-      <div class="recovery-card">
-        <div class="recovery-title">PLAN ÉLITE</div>
-        <div class="recovery-price">$100.000</div>
-        <div class="recovery-math"><span>2 ref = $80.000</span> 🔥 80%</div>
-      </div>
-      <div class="recovery-card">
-        <div class="recovery-title">PLAN EMPRESARIAL</div>
-        <div class="recovery-price">$200.000</div>
-        <div class="recovery-math"><span>2 ref = $160.000</span> 🔥 80%</div>
-      </div>
-    </div>
+<div class="max-w-6xl mx-auto p-4 md:p-6">
 
-    <!-- Tabla -->
-    <div class="table-container">
-      <table>
-        <thead><tr><th>NIVEL</th><th>INVERSIÓN</th><th>COMISIÓN</th><th>PERSONAS</th><th>GANANCIA</th><th>ACUMULADO</th></tr></thead>
-        <tbody>
-          <tr><td>1</td><td>$25k</td><td class="comision-nge">$10k</td><td>2</td><td>$20k</td><td>$20k</td></tr>
-          <tr><td>2</td><td>$50k</td><td class="comision-nge">$20k</td><td>4</td><td>$80k</td><td>$100k</td></tr>
-          <tr><td>3</td><td>$100k</td><td class="comision-nge">$40k</td><td>8</td><td>$320k</td><td>$420k</td></tr>
-          <tr><td>4</td><td>$200k</td><td class="comision-nge">$80k</td><td>16</td><td>$1.280k</td><td>$1.700k</td></tr>
-          <tr><td>5</td><td>$400k</td><td class="comision-nge">$160k</td><td>32</td><td>$5.120k</td><td>$6.820k</td></tr>
-          <tr><td>6</td><td>$800k</td><td class="comision-nge">$320k</td><td>64</td><td>$20.480k</td><td>$27.300k</td></tr>
-          <tr><td>7</td><td>$1.600k</td><td class="comision-nge">$640k</td><td>128</td><td>$81.920k</td><td>$109.220k</td></tr>
-          <tr class="total-row"><td colspan="5" style="text-align:right">TOTAL</td><td class="total-destacado">$3.175k</td></tr>
-        </tbody>
-      </table>
+  <!-- NAVEGACIÓN (escritorio) -->
+  <nav class="hidden md:flex justify-between items-center bg-[#2a2a2a] text-white px-6 py-3 rounded-full mb-6 border-2 border-[#ff6b35] shadow-lg sticky top-4 z-50">
+    <div class="font-['Montserrat'] text-2xl font-bold" style="color: #ff6b35;">🔨 HERRERÍA DUARTE</div>
+    <div class="flex gap-6">
+      <a href="#inicio" class="hover:text-[#ff6b35]">Inicio</a>
+      <a href="#servicios" class="hover:text-[#ff6b35]">Servicios</a>
+      <a href="#nosotros" class="hover:text-[#ff6b35]">Nosotros</a>
+      <a href="#vmv" class="hover:text-[#ff6b35]">VMV</a>
+      <a href="#contacto" class="hover:text-[#ff6b35]">Contacto</a>
+      <a href="/formulario-correcciones.html" class="hover:text-[#ff6b35] font-bold" style="color: #ff6b35;">📝 Actualizar</a>
     </div>
+  </nav>
 
-    <!-- Niveles -->
-    <div class="levels-explanation">
-      <div class="levels-title">📈 ¿CÓMO FUNCIONAN LOS NIVELES?</div>
-      <div class="level-item"><span class="level-name">🎯 NIVEL 1:</span> 2 personas → $20.000 (80% recuperado)</div>
-      <div class="level-item"><span class="level-name">⚡ NIVEL 2:</span> 4 personas → $100.000 (ya ganaste)</div>
-      <div class="level-item"><span class="level-name">🔥 NIVEL 3:</span> 8 personas → $420.000 (x4)</div>
-      <div class="level-item"><span class="level-name">💎 NIVEL 4:</span> 16 personas → $1.700.000 (sueldo anual)</div>
-      <div class="level-item"><span class="level-name">🚀 NIVEL 5:</span> 32 personas → $6.820.000 (vives de esto)</div>
-      <div class="level-item"><span class="level-name">🏦 NIVEL 6:</span> 64 personas → $27.300.000 (top 1%)</div>
-      <div class="level-item"><span class="level-name">👑 NIVEL 7:</span> 128 personas → $109.220.000 (libertad)</div>
+  <!-- MENÚ HAMBURGUESA (móvil) -->
+  <div class="md:hidden sticky top-4 z-50">
+    <div class="flex justify-between items-center bg-[#2a2a2a] text-white p-4 rounded-2xl mb-4 border-2 border-[#ff6b35]">
+      <span class="font-['Montserrat'] text-xl font-bold" style="color: #ff6b35;">🔨 DUARTE</span>
+      <button id="menu-btn" class="menu-hamburguesa text-2xl">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
-
-    <!-- MANIFIESTO CON LOGO ABAJO -->
-    <div class="manifesto">
-      <h2>⚡ LA NUEVA GENERACIÓN EMPRENDEDORA</h2>
-      <p>
-        Con este sistema estamos <strong>reivindicando a los emprendedores</strong> 
-        en esta <strong>segunda etapa de la era digital</strong>.
-      </p>
-      <p>
-        En la <strong>primera etapa</strong>, solo unos pocos disfrutaron los ingresos 
-        y se hicieron multimillonarios <strong>sin repartir con quienes les ayudaron</strong>.
-      </p>
-      <p>
-        Hoy, con la tecnología existente, <strong>los ingresos se reparten entre todos</strong>. 
-        Porque cuando uno crece, crecemos todos.
-      </p>
-      <p style="font-size:1.3rem; font-weight:700; color:var(--amarillo-nge); margin: 30px 0;">
-        La riqueza ya no es de unos pocos. Es de la NUEVA GENERACIÓN.
-      </p>
-      
-      <!-- LOGO ABAJO (blanco) -->
-      <div class="logo-abajo">
-        <img src="logo-blanco.png" alt="NGE">
-      </div>
-    </div>
-
-    <div class="footer">
-      <p>⚡ NGE · El poder de crecer juntos ⚡</p>
-      <p>Inversión total nivel 7: $3.175.000 · Ganancias: +100 MILLONES</p>
+    <div id="mobile-menu" class="bg-[#2a2a2a] text-white p-4 rounded-2xl flex-col gap-3 border-2 border-[#ff6b35] mb-4">
+      <a href="#inicio" class="block py-2 hover:text-[#ff6b35]">Inicio</a>
+      <a href="#servicios" class="block py-2 hover:text-[#ff6b35]">Servicios</a>
+      <a href="#nosotros" class="block py-2 hover:text-[#ff6b35]">Nosotros</a>
+      <a href="#vmv" class="block py-2 hover:text-[#ff6b35]">VMV</a>
+      <a href="#contacto" class="block py-2 hover:text-[#ff6b35]">Contacto</a>
+      <a href="/formulario-correcciones.html" class="block py-2 hover:text-[#ff6b35] font-bold" style="color: #ff6b35;">📝 Actualizar</a>
     </div>
   </div>
+
+  <!-- HERO (portada) -->
+  <section id="inicio" class="mb-12">
+    <div class="relative h-[500px] md:h-[600px] rounded-3xl overflow-hidden border-4 border-[#ff6b35] shadow-2xl">
+      <img src="portada.png" alt="Taller de Herrería Duarte" class="w-full h-full object-cover object-center">
+      <!-- Texto superpuesto solo visible en móvil (para que la imagen no tape) -->
+      <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent pt-20 pb-10 md:hidden">
+        <div class="text-center text-white px-4">
+          <h1 class="text-3xl font-bold" style="color: #ff6b35;">🔨 TALLER DE HERRERÍA DUARTE</h1>
+          <p class="text-xl">José Armando Duarte</p>
+          <p class="text-lg">📞 300 325 4808</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios" class="mb-12">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-8" style="color: #ff6b35;">⚙️ SERVICIOS</h2>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="bg-gray-800 p-6 rounded-2xl shadow-lg border-2 border-[#ff6b35] text-center">
+        <div class="text-6xl mb-4">🔨</div>
+        <h3 class="text-2xl font-bold mb-2" style="color: #ff6b35;">Herrería en general</h3>
+        <p class="text-gray-300">Puertas, ventanas, rejas, estructuras metálicas, muebles en hierro.</p>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-2xl shadow-lg border-2 border-[#ff6b35] text-center">
+        <div class="text-6xl mb-4">⚡</div>
+        <h3 class="text-2xl font-bold mb-2" style="color: #ff6b35;">Soldaduras especiales</h3>
+        <p class="text-gray-300">Trabajos en acero inoxidable, aluminio, hierro forjado, reparaciones industriales.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOSOTROS -->
+  <section id="nosotros" class="mb-12">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-8" style="color: #ff6b35;">👨‍🏭 SOBRE NOSOTROS</h2>
+    <div class="bg-gray-800 p-6 rounded-2xl shadow-lg border-2 border-[#ff6b35]">
+      <p class="text-lg mb-4">José Armando Duarte, herrero de oficio con más de 20 años de experiencia forjando hierro y cumpliendo sueños. Su taller es reconocido en Cúcuta por la calidad, la honestidad y el detalle en cada trabajo. Desde una simple reja hasta estructuras complejas, todo se hace con el mismo cuidado y pasión.</p>
+    </div>
+  </section>
+
+  <!-- VMV -->
+  <section id="vmv" class="mb-12">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-8" style="color: #ff6b35;">🎯 VMV</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-gray-800 p-6 rounded-2xl shadow-lg border-2 border-[#ff6b35] text-center">
+        <div class="text-4xl mb-2">🎯</div>
+        <h3 class="font-bold text-xl mb-2" style="color: #ff6b35;">Misión</h3>
+        <p>Crear piezas metálicas duraderas y estéticas que mejoren la vida de nuestros clientes.</p>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-2xl shadow-lg border-2 border-[#ff6b35] text-center">
+        <div class="text-4xl mb-2">👁️</div>
+        <h3 class="font-bold text-xl mb-2" style="color: #ff6b35;">Visión</h3>
+        <p>Ser el taller de herrería de referencia en Cúcuta, reconocido por nuestra calidad y honestidad.</p>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-2xl shadow-lg border-2 border-[#ff6b35] text-center">
+        <div class="text-4xl mb-2">⭐</div>
+        <h3 class="font-bold text-xl mb-2" style="color: #ff6b35;">Valores</h3>
+        <p>Honestidad, calidad, compromiso, seguridad y trato justo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="mb-12">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-8" style="color: #ff6b35;">📍 CONTACTO</h2>
+    <div class="bg-gray-800 text-white p-8 rounded-3xl border-4 border-[#ff6b35] text-center">
+      <p class="text-2xl mb-2">📞 300 325 4808</p>
+      <p class="text-lg mb-4">📍 Cúcuta, Norte de Santander</p>
+      <p class="text-lg mb-6">Atendido por su propietario, José Armando Duarte</p>
+      <div class="flex justify-center gap-4">
+        <a href="https://wa.me/573003254808" class="bg-green-500 text-white px-6 py-3 rounded-full font-bold hover:bg-green-600">📱 WhatsApp</a>
+        <a href="tel:+573003254808" class="bg-[#ff6b35] text-white px-6 py-3 rounded-full font-bold hover:bg-[#f4a261]">📞 Llamar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="text-center py-6 text-gray-400 border-t-2 border-[#ff6b35]">
+    <p>© 2026 Taller de Herrería Duarte · Todos los derechos reservados</p>
+    <p class="mt-2 text-sm">Diseño: <a href="https://wa.me/573244913371" class="text-[#ff6b35] font-semibold">NGE Tarjetas Digitales</a></p>
+  </footer>
+
+</div>
+
+<!-- QR -->
+<div class="max-w-xs mx-auto mb-8 p-4 bg-gray-800 rounded-2xl shadow-lg border-2 border-[#ff6b35] text-center">
+  <h3 class="font-bold text-[#ff6b35] mb-2">📲 Escanea y guarda el contacto</h3>
+  <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://tallerdeherreriaduarte.netlify.app" alt="QR Herrería Duarte" class="mx-auto rounded-lg">
+</div>
+
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('mostrar'));
+  document.querySelectorAll('#mobile-menu a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('mostrar')));
+</script>
+
 </body>
 </html>
