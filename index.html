@@ -2,191 +2,447 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>🔨 Taller de Herrería Duarte · Soldaduras especiales</title>
-  
-  <!-- ANTI-CACHÉ (para que siempre se vea la última versión) -->
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
-  
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>REPUESTOS CESAR | Taller Profesional</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,800;14..32,900&family=Bebas+Neue&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Open Sans', sans-serif; background: #1a1a1a; color: #f0f0f0; }
-    h1, h2, h3 { font-family: 'Montserrat', sans-serif; font-weight: 700; }
-    .btn-wsp {
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #000000;
+      color: #ffffff;
+      scroll-behavior: smooth;
+    }
+
+    /* === NAVBAR === */
+    .navbar {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #25d366;
-      color: white;
-      border-radius: 50px;
-      padding: 12px 20px;
-      font-weight: 600;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(12px);
       z-index: 1000;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      padding: 0.8rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #cc0000;
     }
-    .btn-nge {
-      background: #ff6b35;
+
+    .logo h1 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.6rem;
+      color: #cc0000;
+    }
+    .logo p {
+      font-size: 0.6rem;
+      color: #ffffff;
+    }
+
+    .menu-icon {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #cc0000;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links li a {
       color: white;
-      padding: 12px 24px;
-      border-radius: 40px;
-      font-weight: 700;
-      transition: all 0.3s;
-      border: 2px solid #f4a261;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
     }
-    .btn-nge:hover {
-      background: #f4a261;
-      color: #ff6b35;
-      transform: scale(1.05);
+    .nav-links li a:hover { color: #cc0000; }
+
+    /* === HERO: SOLO LA PORTADA === */
+    .hero {
+      min-height: 100vh;
+      background: url('portada.jpg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: #000000;
     }
-    #mobile-menu { display: none; }
-    #mobile-menu.mostrar { display: flex; }
-    .menu-hamburguesa { cursor: pointer; }
-    section { scroll-margin-top: 80px; }
+
+    /* === BOTONES FLOTANTES === */
+    .floating-buttons {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 999;
+    }
+    .btn-float {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: white;
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      transition: 0.2s;
+    }
+    .btn-float:hover { transform: scale(1.1); }
+    .whatsapp-float { background: #25D366; }
+    .call-float { background: #cc0000; }
+
+    /* === SECCIONES GENERAL === */
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-family: 'Bebas Neue', cursive;
+      color: #cc0000;
+      margin-bottom: 30px;
+    }
+
+    /* === QUIENES SOMOS === */
+    .quienes-somos {
+      background: #0a0a0a;
+      padding: 40px 20px;
+    }
+    .quienes-container {
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+    }
+    .quienes-container p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #dddddd;
+    }
+
+    /* === ESPECIALIDADES === */
+    .servicios {
+      background: #000000;
+      padding: 40px 20px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .card {
+      background: #111111;
+      padding: 25px;
+      text-align: center;
+      border-radius: 24px;
+      border-bottom: 4px solid #cc0000;
+      transition: 0.3s;
+    }
+    .card:hover { transform: translateY(-5px); background: #1a1a1a; }
+    .card i { font-size: 2.5rem; color: #cc0000; margin-bottom: 15px; }
+    .card h3 { font-size: 1.5rem; margin-bottom: 10px; color: #ffffff; }
+    .card p { color: #cccccc; font-size: 0.9rem; }
+
+    /* === SECCIÓN MVV === */
+    .mvv-section {
+      background: #0a0a0a;
+      padding: 40px 20px;
+    }
+    .mvv-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .mvv-item {
+      background: #111111;
+      border-radius: 32px;
+      padding: 30px 20px;
+      text-align: center;
+      border: 1px solid #cc0000;
+      transition: 0.3s;
+    }
+    .mvv-item:hover {
+      border-color: #cc0000;
+      transform: translateY(-5px);
+    }
+    .mvv-item i {
+      font-size: 3rem;
+      color: #cc0000;
+      margin-bottom: 20px;
+    }
+    .mvv-item h3 {
+      font-size: 1.8rem;
+      font-family: 'Bebas Neue', cursive;
+      color: #cc0000;
+      margin-bottom: 15px;
+    }
+    .mvv-item p {
+      line-height: 1.5;
+      color: #dddddd;
+      font-size: 0.95rem;
+    }
+    .valores-list {
+      list-style: none;
+      text-align: left;
+      margin-top: 15px;
+    }
+    .valores-list li {
+      margin: 10px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #dddddd;
+      font-size: 0.9rem;
+    }
+    .valores-list li i {
+      font-size: 1rem;
+      margin: 0;
+      color: #cc0000;
+    }
+
+    /* === GALERÍA === */
+    .galeria {
+      background: #000000;
+      padding: 40px 20px;
+    }
+    .grid-galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .galeria-item {
+      background: #111111;
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      border: 1px solid #cc0000;
+    }
+    .galeria-item i {
+      font-size: 2.5rem;
+      color: #cc0000;
+    }
+    .galeria-item span {
+      display: block;
+      margin-top: 10px;
+      color: white;
+      font-size: 0.9rem;
+    }
+
+    /* === TARJETA DIGITAL === */
+    .tarjeta-digital {
+      background: linear-gradient(145deg, #111111, #050505);
+      border-radius: 48px;
+      padding: 30px;
+      max-width: 700px;
+      margin: 40px auto 40px;
+      text-align: center;
+      border: 1px solid #cc0000;
+      box-shadow: 0 20px 30px -10px black;
+    }
+    .tarjeta-digital h3 {
+      font-size: 1.8rem;
+      color: #cc0000;
+      margin-bottom: 10px;
+    }
+    .telefonos {
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+    .telefonos i {
+      margin-right: 10px;
+      color: #cc0000;
+    }
+    .btn-whatsapp {
+      background: #25D366;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: 0.3s;
+    }
+    .btn-whatsapp:hover { transform: scale(1.05); }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #000000;
+      border-top: 1px solid #cc0000;
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .menu-icon { display: block; }
+      .nav-links {
+        position: fixed;
+        top: 60px;
+        left: -100%;
+        width: 70%;
+        height: 100vh;
+        background: #000000ef;
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+        padding-top: 40px;
+        transition: 0.3s;
+        gap: 1.5rem;
+      }
+      .nav-links.active { left: 0; }
+      .hero { min-height: 50vh; }
+      .section-title { font-size: 1.8rem; }
+      .telefonos { font-size: 1.1rem; }
+      .grid { gap: 20px; }
+      .card { padding: 20px; }
+    }
   </style>
 </head>
-<body class="bg-gray-900">
+<body>
 
-<!-- WhatsApp flotante -->
-<a href="https://wa.me/573003254808?text=Hola%20José%20Armando,%20quiero%20cotizar%20un%20trabajo%20de%20herrería" class="btn-wsp" target="_blank">
-  <i class="fab fa-whatsapp"></i> Cotizar por WhatsApp
-</a>
-
-<div class="max-w-6xl mx-auto p-4 md:p-6">
-
-  <!-- NAVEGACIÓN (escritorio) -->
-  <nav class="hidden md:flex justify-between items-center bg-[#2a2a2a] text-white px-6 py-3 rounded-full mb-6 border-2 border-[#ff6b35] shadow-lg sticky top-4 z-50">
-    <div class="font-['Montserrat'] text-2xl font-bold" style="color: #ff6b35;">🔨 HERRERÍA DUARTE</div>
-    <div class="flex gap-6">
-      <a href="#inicio" class="hover:text-[#ff6b35]">Inicio</a>
-      <a href="#servicios" class="hover:text-[#ff6b35]">Servicios</a>
-      <a href="#nosotros" class="hover:text-[#ff6b35]">Nosotros</a>
-      <a href="#vmv" class="hover:text-[#ff6b35]">VMV</a>
-      <a href="#contacto" class="hover:text-[#ff6b35]">Contacto</a>
-      <a href="/formulario-correcciones.html" class="hover:text-[#ff6b35] font-bold" style="color: #ff6b35;">📝 Actualizar</a>
-    </div>
-  </nav>
-
-  <!-- MENÚ HAMBURGUESA (móvil) -->
-  <div class="md:hidden sticky top-4 z-50">
-    <div class="flex justify-between items-center bg-[#2a2a2a] text-white p-4 rounded-2xl mb-4 border-2 border-[#ff6b35]">
-      <span class="font-['Montserrat'] text-xl font-bold" style="color: #ff6b35;">🔨 DUARTE</span>
-      <button id="menu-btn" class="menu-hamburguesa text-2xl">
-        <i class="fas fa-bars"></i>
-      </button>
-    </div>
-    <div id="mobile-menu" class="bg-[#2a2a2a] text-white p-4 rounded-2xl flex-col gap-3 border-2 border-[#ff6b35] mb-4">
-      <a href="#inicio" class="block py-2 hover:text-[#ff6b35]">Inicio</a>
-      <a href="#servicios" class="block py-2 hover:text-[#ff6b35]">Servicios</a>
-      <a href="#nosotros" class="block py-2 hover:text-[#ff6b35]">Nosotros</a>
-      <a href="#vmv" class="block py-2 hover:text-[#ff6b35]">VMV</a>
-      <a href="#contacto" class="block py-2 hover:text-[#ff6b35]">Contacto</a>
-      <a href="/formulario-correcciones.html" class="block py-2 hover:text-[#ff6b35] font-bold" style="color: #ff6b35;">📝 Actualizar</a>
-    </div>
+<!-- NAVBAR -->
+<div class="navbar">
+  <div class="logo">
+    <h1>REPUESTOS CESAR</h1>
+    <p>taller profesional</p>
   </div>
-
-  <!-- HERO (portada) -->
-  <section id="inicio" class="mb-12">
-    <div class="relative h-[500px] md:h-[600px] rounded-3xl overflow-hidden border-4 border-[#ff6b35] shadow-2xl">
-      <img src="portada.png" alt="Taller de Herrería Duarte" class="w-full h-full object-cover object-center">
-      <!-- Texto superpuesto solo visible en móvil (para que la imagen no tape) -->
-      <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent pt-20 pb-10 md:hidden">
-        <div class="text-center text-white px-4">
-          <h1 class="text-3xl font-bold" style="color: #ff6b35;">🔨 TALLER DE HERRERÍA DUARTE</h1>
-          <p class="text-xl">José Armando Duarte</p>
-          <p class="text-lg">📞 300 325 4808</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICIOS -->
-  <section id="servicios" class="mb-12">
-    <h2 class="text-3xl md:text-4xl font-bold text-center mb-8" style="color: #ff6b35;">⚙️ SERVICIOS</h2>
-    <div class="grid md:grid-cols-2 gap-6">
-      <div class="bg-gray-800 p-6 rounded-2xl shadow-lg border-2 border-[#ff6b35] text-center">
-        <div class="text-6xl mb-4">🔨</div>
-        <h3 class="text-2xl font-bold mb-2" style="color: #ff6b35;">Herrería en general</h3>
-        <p class="text-gray-300">Puertas, ventanas, rejas, estructuras metálicas, muebles en hierro.</p>
-      </div>
-      <div class="bg-gray-800 p-6 rounded-2xl shadow-lg border-2 border-[#ff6b35] text-center">
-        <div class="text-6xl mb-4">⚡</div>
-        <h3 class="text-2xl font-bold mb-2" style="color: #ff6b35;">Soldaduras especiales</h3>
-        <p class="text-gray-300">Trabajos en acero inoxidable, aluminio, hierro forjado, reparaciones industriales.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- NOSOTROS -->
-  <section id="nosotros" class="mb-12">
-    <h2 class="text-3xl md:text-4xl font-bold text-center mb-8" style="color: #ff6b35;">👨‍🏭 SOBRE NOSOTROS</h2>
-    <div class="bg-gray-800 p-6 rounded-2xl shadow-lg border-2 border-[#ff6b35]">
-      <p class="text-lg mb-4">José Armando Duarte, herrero de oficio con más de 20 años de experiencia forjando hierro y cumpliendo sueños. Su taller es reconocido en Cúcuta por la calidad, la honestidad y el detalle en cada trabajo. Desde una simple reja hasta estructuras complejas, todo se hace con el mismo cuidado y pasión.</p>
-    </div>
-  </section>
-
-  <!-- VMV -->
-  <section id="vmv" class="mb-12">
-    <h2 class="text-3xl md:text-4xl font-bold text-center mb-8" style="color: #ff6b35;">🎯 VMV</h2>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-gray-800 p-6 rounded-2xl shadow-lg border-2 border-[#ff6b35] text-center">
-        <div class="text-4xl mb-2">🎯</div>
-        <h3 class="font-bold text-xl mb-2" style="color: #ff6b35;">Misión</h3>
-        <p>Crear piezas metálicas duraderas y estéticas que mejoren la vida de nuestros clientes.</p>
-      </div>
-      <div class="bg-gray-800 p-6 rounded-2xl shadow-lg border-2 border-[#ff6b35] text-center">
-        <div class="text-4xl mb-2">👁️</div>
-        <h3 class="font-bold text-xl mb-2" style="color: #ff6b35;">Visión</h3>
-        <p>Ser el taller de herrería de referencia en Cúcuta, reconocido por nuestra calidad y honestidad.</p>
-      </div>
-      <div class="bg-gray-800 p-6 rounded-2xl shadow-lg border-2 border-[#ff6b35] text-center">
-        <div class="text-4xl mb-2">⭐</div>
-        <h3 class="font-bold text-xl mb-2" style="color: #ff6b35;">Valores</h3>
-        <p>Honestidad, calidad, compromiso, seguridad y trato justo.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACTO -->
-  <section id="contacto" class="mb-12">
-    <h2 class="text-3xl md:text-4xl font-bold text-center mb-8" style="color: #ff6b35;">📍 CONTACTO</h2>
-    <div class="bg-gray-800 text-white p-8 rounded-3xl border-4 border-[#ff6b35] text-center">
-      <p class="text-2xl mb-2">📞 300 325 4808</p>
-      <p class="text-lg mb-4">📍 Cúcuta, Norte de Santander</p>
-      <p class="text-lg mb-6">Atendido por su propietario, José Armando Duarte</p>
-      <div class="flex justify-center gap-4">
-        <a href="https://wa.me/573003254808" class="bg-green-500 text-white px-6 py-3 rounded-full font-bold hover:bg-green-600">📱 WhatsApp</a>
-        <a href="tel:+573003254808" class="bg-[#ff6b35] text-white px-6 py-3 rounded-full font-bold hover:bg-[#f4a261]">📞 Llamar</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="text-center py-6 text-gray-400 border-t-2 border-[#ff6b35]">
-    <p>© 2026 Taller de Herrería Duarte · Todos los derechos reservados</p>
-    <p class="mt-2 text-sm">Diseño: <a href="https://wa.me/573244913371" class="text-[#ff6b35] font-semibold">NGE Tarjetas Digitales</a></p>
-  </footer>
-
+  <div class="menu-icon" id="menuToggle">
+    <i class="fas fa-bars"></i>
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#quienes">Quiénes Somos</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#mvv">MVV</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
 </div>
 
-<!-- QR -->
-<div class="max-w-xs mx-auto mb-8 p-4 bg-gray-800 rounded-2xl shadow-lg border-2 border-[#ff6b35] text-center">
-  <h3 class="font-bold text-[#ff6b35] mb-2">📲 Escanea y guarda el contacto</h3>
-<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://tallerdeherreriaduarte.netlify.app" alt="QR Herrería Duarte" class="mx-auto rounded-lg"></div>
+<!-- HERO: SOLO LA PORTADA -->
+<section id="inicio" class="hero"></section>
+
+<!-- QUIENES SOMOS -->
+<section id="quienes" class="quienes-somos">
+  <div class="section-title">¿QUIÉNES SOMOS?</div>
+  <div class="quienes-container">
+    <p>Somos <strong>REPUESTOS CESAR</strong>, un taller profesional con años de experiencia en el sector automotriz. Nos especializamos en ofrecer repuestos originales y servicio técnico de alta calidad para suspensión, motor, dirección y lubricación. Nuestro compromiso es con la seguridad, la honestidad y la satisfacción de nuestros clientes en Cúcuta.</p>
+  </div>
+</section>
+
+<!-- ESPECIALIDADES -->
+<section id="servicios" class="servicios">
+  <div class="section-title">ESPECIALIDADES</div>
+  <div class="grid">
+    <div class="card"><i class="fas fa-car-side"></i><h3>SUSPENSIÓN</h3><p>Amortiguadores, rótulas, estabilidad total</p></div>
+    <div class="card"><i class="fas fa-microchip"></i><h3>MOTOR</h3><p>Diagnóstico, repuestos originales, potencia</p></div>
+    <div class="card"><i class="fas fa-steering-wheel"></i><h3>DIRECCIÓN</h3><p>Precisión, cremalleras, hidráulica</p></div>
+    <div class="card"><i class="fas fa-oil-can"></i><h3>LUBRICACIÓN</h3><p>Aceites, filtros, rendimiento asegurado</p></div>
+  </div>
+</section>
+
+<!-- SECCIÓN MVV -->
+<section id="mvv" class="mvv-section">
+  <div class="section-title">MISIÓN · VISIÓN · VALORES</div>
+  <div class="mvv-grid">
+    <div class="mvv-item">
+      <i class="fas fa-bullseye"></i>
+      <h3>MISIÓN</h3>
+      <p>Proveer repuestos de alta calidad y servicio técnico especializado en suspensión, motor, dirección y lubricación, garantizando la satisfacción y seguridad de nuestros clientes en Cúcuta.</p>
+    </div>
+    <div class="mvv-item">
+      <i class="fas fa-eye"></i>
+      <h3>VISIÓN</h3>
+      <p>Ser el taller de repuestos más confiable y reconocido del sector, expandiendo nuestra presencia digital y física con los más altos estándares de calidad.</p>
+    </div>
+    <div class="mvv-item">
+      <i class="fas fa-gem"></i>
+      <h3>VALORES</h3>
+      <ul class="valores-list">
+        <li><i class="fas fa-check-circle"></i> Confianza y transparencia</li>
+        <li><i class="fas fa-check-circle"></i> Honestidad en cada repuesto</li>
+        <li><i class="fas fa-check-circle"></i> Responsabilidad técnica</li>
+        <li><i class="fas fa-check-circle"></i> Rapidez en el servicio</li>
+        <li><i class="fas fa-check-circle"></i> Garantía en todos los productos</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section id="galeria" class="galeria">
+  <div class="section-title">GALERÍA</div>
+  <div class="grid-galeria">
+    <div class="galeria-item"><i class="fas fa-car"></i><span>Vehículos</span></div>
+    <div class="galeria-item"><i class="fas fa-tools"></i><span>Taller</span></div>
+    <div class="galeria-item"><i class="fas fa-oil-can"></i><span>Lubricantes</span></div>
+    <div class="galeria-item"><i class="fas fa-microchip"></i><span>Motores</span></div>
+  </div>
+</section>
+
+<!-- TARJETA DIGITAL Y CONTACTO -->
+<section id="contacto">
+  <div class="tarjeta-digital">
+    <h3><i class="fas fa-id-card"></i> REPUESTOS CESAR</h3>
+    <p style="font-size:1.1rem;">taller profesional</p>
+    <div class="telefonos">
+      <p><i class="fab fa-whatsapp"></i> 321 9119621</p>
+      <p><i class="fas fa-phone-alt"></i> 310 3533593</p>
+    </div>
+    <div style="display: flex; gap: 15px; justify-content: center; margin-top: 20px; flex-wrap: wrap;">
+      <a href="https://wa.me/573219119621" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      <a href="tel:+573103533593" class="btn-whatsapp" style="background: #cc0000;"><i class="fas fa-phone"></i> Llamar</a>
+    </div>
+    <!-- TU TARJETA DIGITAL - ENLACE A TU WHATSAPP -->
+    <div style="margin-top: 25px;">
+      <a href="https://wa.me/573244913371?text=Hola%2C%20quiero%20sacar%20mi%20tarjeta%20digital" target="_blank" style="background: #cc0000; color: white; padding: 10px 20px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 10px;">
+        <i class="fas fa-id-card"></i> 📱 Tu Tarjeta Digital - Haz clic aquí
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 REPUESTOS CESAR - Taller profesional con experiencia y garantía</p>
+  <p style="margin-top: 8px; font-size: 0.8rem;">Cúcuta, Colombia</p>
+</footer>
+
+<!-- BOTONES FLOTANTES -->
+<div class="floating-buttons">
+  <a href="https://wa.me/573219119621" class="btn-float whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  <a href="tel:+573103533593" class="btn-float call-float"><i class="fas fa-phone-alt"></i></a>
+</div>
 
 <script>
-  const menuBtn = document.getElementById('menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('mostrar'));
-  document.querySelectorAll('#mobile-menu a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('mostrar')));
+  // Menú hamburguesa
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  }
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('active'));
+  });
 </script>
-
 </body>
 </html>
